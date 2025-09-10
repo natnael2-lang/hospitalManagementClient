@@ -1,0 +1,94 @@
+[
+    {
+      "service_id": "SRV001",
+      "name": "Emergency Care",
+      "description": "Immediate medical attention and treatment for critical conditions and injuries.",
+      "department": "Emergency Medicine",
+      "paidPrice": 1500,
+      "paidBy": "Insurance",
+      "payerName": "HealthCare Plus"
+    },
+    {
+      "service_id": "SRV002",
+      "name": "Primary Care",
+      "description": "General medical care, preventive services, and routine check-ups for patients of all ages.",
+      "department": "Family Medicine",
+      "paidPrice": 300,
+      "paidBy": "Cash",
+      "payerName": "John Doe"
+    },
+    {
+      "service_id": "SRV003",
+      "name": "Surgery",
+      "description": "Wide range of surgical procedures for various conditions, including minimally invasive and robotic-assisted surgeries.",
+      "department": "Surgery",
+      "paidPrice": 5000,
+      "paidBy": "Credit Card",
+      "payerName": "Jane Smith"
+    },
+    {
+      "service_id": "SRV004",
+      "name": "Laboratory Services",
+      "description": "Diagnostic tests, blood work, and other laboratory investigations to aid in diagnosis and treatment.",
+      "department": "Laboratory Medicine",
+      "paidPrice": 200,
+      "paidBy": "Insurance",
+      "payerName": "MediCare Insurance"
+    },
+    {
+      "service_id": "SRV005",
+      "name": "Imaging Services",
+      "description": "Advanced imaging techniques such as X-rays, CT scans, MRI scans, and ultrasounds for accurate diagnosis.",
+      "department": "Radiology",
+      "paidPrice": 1000,
+      "paidBy": "Cash",
+      "payerName": "Alice Johnson"
+    },
+    {
+      "service_id": "SRV006",
+      "name": "Maternity Care",
+      "description": "Prenatal care, delivery services, and postpartum care for expectant mothers and newborns.",
+      "department": "Obstetrics & Gynecology",
+      "paidPrice": 2500,
+      "paidBy": "Insurance",
+      
+      "payerName": "FamilyCare Insurance"
+    },
+    {
+      "service_id": "SRV007",
+      "name": "Pediatrics",
+      "description": "Specialized care for infants, children, and adolescents, including preventive care, vaccinations, and treatment of childhood illnesses.",
+      "department": "Pediatrics",
+      "paidPrice": 400,
+      "paidBy": "Cash",
+      "payerName": "Michael Wilson"
+    },
+    {
+      "service_id": "SRV008",
+      "name": "Cardiology",
+      "description": "Comprehensive heart care services including diagnosis, treatment, and management of heart conditions.",
+      "department": "Cardiology",
+      "paidPrice": 3500,
+      "paidBy": "Credit Card",
+      "payerName": "Sophia Martinez"
+    },
+    {
+      "service_id": "SRV009",
+      "name": "Orthopedics",
+      "description": "Diagnosis and treatment of musculoskeletal conditions, including joint replacements, sports injuries, and fractures.",
+      "department": "Orthopedics",
+      "paidPrice": 600,
+      "paidBy": "Cash",
+      "payerName": "William Thompson"
+    },
+    {
+      "service_id": "SRV010",
+      "name": "Physical Therapy",
+      "description": "Rehabilitation services to restore mobility, strength, and function after injury or surgery.",
+      "department": "Physical Therapy",
+      "paidPrice": 800,
+      "paidBy": "Insurance",
+      "payerName": "CareFirst Insurance"
+    }
+  ]
+  

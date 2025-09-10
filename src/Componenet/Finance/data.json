@@ -1,0 +1,137 @@
+[
+    {
+      "name": "John Doe",
+      "id": "EMP001",
+      "salary": 50000,
+      "bankname": "XYZ Bank",
+      "accountNumber": "1234567890",
+      "paid": true,
+      "onleave": false
+    },
+    {
+      "name": "Jane Smith",
+      "id": "EMP002",
+      "salary": 55000,
+      "bankname": "ABC Bank",
+      "accountNumber": "0987654321",
+      "paid": false,
+      "onleave": true
+    },
+    {
+      "name": "Michael Johnson",
+      "id": "EMP003",
+      "salary": 60000,
+      "bankname": "DEF Bank",
+      "accountNumber": "4567890123",
+      "paid": true,
+      "onleave": false
+    },
+    {
+      "name": "Emily Brown",
+      "id": "EMP004",
+      "salary": 52000,
+      "bankname": "GHI Bank",
+      "accountNumber": "1357924680",
+      "paid": false,
+      "onleave": true
+    },
+    {
+      "name": "David Wilson",
+      "id": "EMP005",
+      "salary": 58000,
+      "bankname": "JKL Bank",
+      "accountNumber": "9876543210",
+      "paid": true,
+      "onleave": false
+    },
+    {
+      "name": "Sarah Jones",
+      "id": "EMP006",
+      "salary": 54000,
+      "bankname": "MNO Bank",
+      "accountNumber": "2468013579",
+      "paid": true,
+      "onleave": true
+    },
+    {
+      "name": "Christopher Lee",
+      "id": "EMP007",
+      "salary": 57000,
+      "bankname": "PQR Bank",
+      "accountNumber": "1029384756",
+      "paid": false,
+      "onleave": false
+    },
+    {
+      "name": "Jessica Garcia",
+      "id": "EMP008",
+      "salary": 59000,
+      "bankname": "STU Bank",
+      "accountNumber": "9876543210",
+      "paid": true,
+      "onleave": true
+    },
+    {
+      "name": "Daniel Martinez",
+      "id": "EMP009",
+      "salary": 51000,
+      "bankname": "VWX Bank",
+      "accountNumber": "1230984567",
+      "paid": false,
+      "onleave": false
+    },
+    {
+      "name": "Amanda Davis",
+      "id": "EMP010",
+      "salary": 53000,
+      "bankname": "YZA Bank",
+      "accountNumber": "4567890123",
+      "paid": true,
+      "onleave": true
+    },
+    {
+      "name": "Olivia Miller",
+      "id": "EMP011",
+      "salary": 62000,
+      "bankname": "LMN Bank",
+      "accountNumber": "1122334455",
+      "paid": true,
+      "onleave": false
+    },
+    {
+      "name": "William Brown",
+      "id": "EMP012",
+      "salary": 58000,
+      "bankname": "OPQ Bank",
+      "accountNumber": "9988776655",
+      "paid": false,
+      "onleave": true
+    },
+    {
+      "name": "Sophia Wilson",
+      "id": "EMP013",
+      "salary": 54000,
+      "bankname": "RST Bank",
+      "accountNumber": "5544332211",
+      "paid": true,
+      "onleave": false
+    },
+    {
+      "name": "James Taylor",
+      "id": "EMP014",
+      "salary": 60000,
+      "bankname": "UVW Bank",
+      "accountNumber": "7788990011",
+      "paid": false,
+      "onleave": true
+    },
+    {
+      "name": "Emma Anderson",
+      "id": "EMP015",
+      "salary": 57000,
+      "bankname": "XYZ Bank",
+      "accountNumber": "6677889900",
+      "paid": true,
+      "onleave": false
+    }
+]

@@ -1,0 +1,79 @@
+{
+    "financialData": {
+      "dashboardOverview": {
+        "totalRevenue": 2500000,
+        "totalExpenses": 1800000,
+        "netIncome": 700000,
+        "accountsReceivable": 500000,
+        "cashFlow": 300000
+      },
+
+
+
+
+      
+      "monthlyStatements": {
+        "incomeStatement": {
+          "revenue": [
+            { "category": "Inpatient Services", "amount": 1000000 },
+            { "category": "Outpatient Services", "amount": 800000 },
+            { "category": "Diagnostic Tests", "amount": 300000 }
+          ],
+          "expenses": [
+            { "category": "Salaries", "amount": 600000 },
+            { "category": "Supplies", "amount": 300000 },
+            { "category": "Utilities", "amount": 150000 },
+            { "category": "Maintenance", "amount": 100000 },
+            { "category": "Other Expenses", "amount": 300000 }
+          ]
+        },
+        "balanceSheet": {
+          "assets": [
+            { "category": "Cash and Cash Equivalents", "amount": 600000 },
+            { "category": "Accounts Receivable", "amount": 500000 },
+            { "category": "Property and Equipment", "amount": 2000000 }
+          ],
+          "liabilities": [
+            { "category": "Accounts Payable", "amount": 400000 },
+            { "category": "Loans Payable", "amount": 800000 }
+          ],
+          "equity": 2300000
+        },
+        "cashFlowStatement": {
+          "operatingActivities": 500000,
+          "investingActivities": -300000,
+          "financingActivities": 100000
+        }
+      },
+      "budgetVsActual": {
+        "revenueBudget": 2400000,
+        "expensesBudget": 2000000,
+        "netIncomeBudget": 400000,
+        "revenueActual": 2500000,
+        "expensesActual": 1800000,
+        "netIncomeActual": 700000
+      },
+      "topRevenueDrivers": [
+        { "department": "Cardiology", "revenue": 600000 },
+        { "department": "Orthopedics", "revenue": 500000 },
+        { "department": "Oncology", "revenue": 400000 }
+      ],
+      "topExpenseCategories": [
+        { "category": "Salaries", "expenses": 600000 },
+        { "category": "Supplies", "expenses": 300000 },
+        { "category": "Utilities", "expenses": 150000 }
+      ],
+      "accountsReceivableAging": [
+        { "agingCategory": "Current", "amount": 200000 },
+        { "agingCategory": "30-60 Days", "amount": 150000 },
+        { "agingCategory": "60-90 Days", "amount": 100000 },
+        { "agingCategory": "Over 90 Days", "amount": 50000 }
+      ],
+      "trendAnalysis": {
+        "revenueTrend": [950000, 1050000, 1100000, 1200000, 1250000],
+        "expensesTrend": [500000, 550000, 600000, 650000, 700000],
+        "cashFlowTrend": [300000, 320000, 340000, 360000, 380000]
+      }
+    }
+  }
+  
