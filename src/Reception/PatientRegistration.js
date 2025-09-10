@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from "react-router-dom";
+
 
 const PatientRegistration = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [registrationMessage, setRegistrationMessage] = useState('');
-    const navigate = useNavigate();
+   
 
     useEffect(() => {
         const fetchReceptionData = async () => {
             try {
                 const res = await axios.get("http://localhost:3001/reception");
                 if (res.status === 200) {
-                    // Handle success if necessary
+                   
                 } else {
-                    // Handle non-200 responses if necessary
+                  
                 }
             } catch (err) {
                 console.error("Error fetching reception data:", err);
@@ -23,14 +23,14 @@ const PatientRegistration = () => {
         };
 
         fetchReceptionData();
-    }, []); // Empty dependency array, runs only once
+    }, []); 
 
     const onSubmit = async (data) => {
         try {
             const response = await axios.post("http://localhost:3001/patient/register", { patientInfo: data });
             if (response.status === 201) {
                 setRegistrationMessage(`Patient registered successfully! Registration Number: ${response.data.id}`);
-                reset(); // Reset form fields
+                reset(); 
             }
         } catch (error) {
             if (error.response && error.response.status === 400) {
@@ -49,7 +49,7 @@ const PatientRegistration = () => {
                 <fieldset className="mb-4">
                     <legend className="text-lg font-semibold">Personal Information:</legend>
 
-                    {/* First Name Field */}
+                 
                     <div className="mb-3">
                         <label className="block text-sm font-medium text-gray-700" htmlFor="firstName">
                             First Name

@@ -9,22 +9,22 @@ import LabResults from './components/labResult';
 function AppointmentDetailsPage() {
   const { appointmentId } = useParams();
   const [appointmentDetails, setAppointmentDetails] = useState(null);
-  const [labResults, setLabResults] = useState([]);
-  const [prescription, setPrescription] = useState("");
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null); 
 
+  // Remove unused states if not needed
+  // const [labResults, setLabResults] = useState([]);
+  // const [prescription, setPrescription] = useState("");
+
   const handleLabResults = (data) => {
-    setLabResults(data);
+    // Implement logic if labResults is used
+    // setLabResults(data);
   };
 
   const handlePrescription = (medication, dosage) => {
-    setPrescription({ medication, dosage });
-    handleMedicalDetails();
-  };
-
-  const handleMedicalDetails = async () => {
-    // Your logic for handling medical details can be implemented here
+    // Implement logic if prescription is used
+    // setPrescription({ medication, dosage });
+    // handleMedicalDetails();
   };
 
   useEffect(() => {
@@ -54,7 +54,7 @@ function AppointmentDetailsPage() {
   const doctorId = appointmentDetails?.appointment?.doctorId;
 
   if (loading) {
-    return <p>Loading...</p>; // Loading state
+    return <p>Loading...</p>; 
   }
 
   return (
@@ -62,7 +62,7 @@ function AppointmentDetailsPage() {
       <h2 className="text-2xl font-bold mb-4">Appointment Details</h2>
       <h3 className="text-lg font-semibold">Appointment Information:</h3>
       {error ? (
-        <p>{error}</p> // Error message
+        <p>{error}</p> 
       ) : appointmentDetails ? (
         <>
           <p>Date: {new Date(appointmentDetails.appointment.date).toLocaleDateString()}</p>
