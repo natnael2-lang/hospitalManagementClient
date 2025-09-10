@@ -7,15 +7,7 @@ function Sidebar() {
       <div className="sidebar-header">
         Doctor Home
       </div>
-      <ul className="sidebar-menu">
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">To-Do List</a></li>
-        <li><a href="#">Patients</a></li>
-        {/* Add more custom items here */}
-        <li><a href="#">Appointments</a></li>
-        <li><a href="#">Reports</a></li>
-        <li><a href="#">Settings</a></li>
-      </ul>
+      
     </div>
   );
 }
