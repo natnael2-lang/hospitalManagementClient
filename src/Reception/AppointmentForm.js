@@ -18,7 +18,7 @@ const AppointmentForm = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const doctorAvailable = true; // Replace with actual logic
+    const doctorAvailable = true; 
 
     const selectedDateTime = new Date(appointmentDetails.appointmentDate + 'T' + appointmentDetails.appointmentTime).getTime();
     const currentDateTime = new Date().getTime();

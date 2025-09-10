@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './componentsPharma/ProfilePharmacist.css';
+
 
 function ProfilePharma() {
   const [profileInfo, setProfileInfo] = useState({

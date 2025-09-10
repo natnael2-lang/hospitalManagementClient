@@ -10,8 +10,8 @@ const PatientRecords = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // Simulate searching for patient records
-    const foundRecord = ''; // Replace with actual logic
+    
+    const foundRecord = ''; 
     if (foundRecord) {
       setSearchResult(foundRecord);
     } else {

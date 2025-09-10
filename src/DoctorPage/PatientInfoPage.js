@@ -1,6 +1,5 @@
 // Import necessary modules
 import React, { useEffect, useState } from 'react'; // Import React and hooks for state and effects
-import './styles.css'; // Import CSS file for styling
 
 // Define PatientInfoPage functional component
 const PatientInfoPage = () => {

@@ -18,8 +18,8 @@ const TelemedicineAppointmentForm = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // Simulate checking doctor availability
-    const doctorAvailable = true; // Replace with actual logic
+    
+    const doctorAvailable = true; 
 
     const selectedDateTime = new Date(appointmentDetails.appointmentDate + 'T' + appointmentDetails.appointmentTime).getTime();
     const currentDateTime = new Date().getTime();

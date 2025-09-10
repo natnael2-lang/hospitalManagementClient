@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './medi.css';
+import axios from 'axios';
+
 function Medicine({ onAddMedicine }) {
   const [name, setName] = useState('');
   const [manufacturer,setManufacturer] =useState('');

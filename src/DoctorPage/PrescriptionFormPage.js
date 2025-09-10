@@ -1,6 +1,6 @@
 import React from "react";
 import "./PrescriptionFormPage";
-import "./PrescriptionFormPage.css";
+
 
 function App() {
   return (

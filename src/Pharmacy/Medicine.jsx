@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
 // import { useSnackbar } from 'notistack'; // Import useSnackbar
-import './componentsPharma/medi.css';
+
 
 function Medicine() {
   const [name, setName] = useState('');

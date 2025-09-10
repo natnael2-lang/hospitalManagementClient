@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './LabTestRequestPage.css';
+
 import axios from 'axios'
 function LabTestRequestPage() {
   const [formData, setFormData] = useState({

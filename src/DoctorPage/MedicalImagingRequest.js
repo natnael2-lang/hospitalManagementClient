@@ -1,7 +1,7 @@
 // Import React library and CSS file for styling
 import React, { useState } from 'react';
 import axios from 'axios'
-import './imaging.css';
+
 
 // Define MedicalImagingRequest functional component
     const MedicalImagingRequest = () => {
