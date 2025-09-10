@@ -11,7 +11,7 @@ const Login = () => {
     useEffect(() => {
         const checkLoginStatus = async () => {
             try {
-                const res = await axios.get("http://localhost:3001/auth/loginOnLoad", { withCredentials: true });
+                const res = await axios.get("https://hospitalmanagementserver-nqol.onrender.com/auth/loginOnLoad", { withCredentials: true });
                 if (res.status === 200) {
                     navigate(`${res.data.redirect}`);
                 }
@@ -32,7 +32,7 @@ const Login = () => {
 
         if (Object.keys(newErrors).length === 0) {
             try {
-                const result = await axios.post('http://localhost:3001/auth/login', { username: formData.username, password: formData.password }, { withCredentials: true });
+                const result = await axios.post('https://hospitalmanagementserver-nqol.onrender.com/auth/login', { username: formData.username, password: formData.password }, { withCredentials: true });
                 if (result.status === 200) {
                     const redirectPath = result.data.redirect;
                     navigate(redirectPath);
