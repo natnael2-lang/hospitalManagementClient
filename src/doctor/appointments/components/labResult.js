@@ -26,7 +26,7 @@ function LabResults({handleLabResults,appointmentId,labResults}) {
     };
 
   
-  }, []);
+  }, [appointmentId, handleLabResults]);
 
   return (
     <div label="Lab Results">
