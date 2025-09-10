@@ -4,7 +4,7 @@ import Hematology from '../forms/hematology';
 
 function LabRequests() {
   const [labRequests, setLabRequests] = useState({});
-  const [isLabRequest,setIsLabRequest]=useState(false);
+  
 
 
 
