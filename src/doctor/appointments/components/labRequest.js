@@ -1,4 +1,5 @@
-import React, { useEffect, useState ,axios} from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Hematology from '../forms/hematology';
 
 function LabRequests() {
