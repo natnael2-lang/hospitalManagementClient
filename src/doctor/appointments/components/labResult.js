@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 
 function LabResults({handleLabResults,appointmentId,labResults}) {
@@ -24,6 +24,7 @@ function LabResults({handleLabResults,appointmentId,labResults}) {
         console.error('Failed to fetch lab results:');
       }
     };
+    fetchLabResults();
 
   
   }, [appointmentId, handleLabResults]);

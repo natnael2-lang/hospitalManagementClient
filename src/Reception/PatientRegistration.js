@@ -6,14 +6,14 @@ import {useNavigate} from "react-router-dom"
 const PatientRegistration = () => {
     const { register, handleSubmit, formState: { errors } ,reset} = useForm();
     const [registrationMessage, setRegistrationMessage] = useState('');
-    const [success,setSuccess]=useState("");
+   
     const navigate=useNavigate();
 
      useEffect(() => {
         axios.get("http://localhost:3001/reception")
             .then(res => {
                 if (res.status===200) {
-                    setSuccess("success ok");
+                  
                 } else if (res.status===302){
                     navigate(`${res.json().redirect}`);
                 }

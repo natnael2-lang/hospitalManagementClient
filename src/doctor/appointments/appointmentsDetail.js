@@ -6,7 +6,7 @@ import MedicalHistory from './components/medicalHistory';
 import LabRequests from './components/labRequest';
 import Prescriptions from './components/prescription';
 import LabResults from './components/labResult';
-import axios from 'axios';
+
 
 function AppointmentDetailsPage() {
   const { appointmentId } = useParams();
@@ -21,13 +21,8 @@ function AppointmentDetailsPage() {
   }
 
   const handleMedicalDetails=async ()=>{
-    const condition={labResults,prescription}
-    try{
-         const result=await axios.post(`./patients/${patientId}/medicalHistory`,{labResults,prescription});
-    }
-    catch{
-
-    }
+    
+    
   }
 
   const handlePrescription=( 
@@ -57,6 +52,8 @@ function AppointmentDetailsPage() {
       }
      
     }
+
+    fetchAppointmentDetails();
 
    
   }, [appointmentId]);
