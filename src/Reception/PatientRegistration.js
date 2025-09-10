@@ -1,41 +1,44 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const PatientRegistration = () => {
-    const { register, handleSubmit, formState: { errors } ,reset} = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [registrationMessage, setRegistrationMessage] = useState('');
-   
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
-     useEffect(() => {
-        axios.get("http://localhost:3001/reception")
-            .then(res => {
-                if (res.status===200) {
-                  
-                } else if (res.status===302){
-                    navigate(`${res.json().redirect}`);
+    useEffect(() => {
+        const fetchReceptionData = async () => {
+            try {
+                const res = await axios.get("http://localhost:3001/reception");
+                if (res.status === 200) {
+                    // Handle success if necessary
+                } else {
+                    // Handle non-200 responses if necessary
                 }
-            })
-            .catch(err => console.log(err));
-    }, []);
+            } catch (err) {
+                console.error("Error fetching reception data:", err);
+            }
+        };
+
+        fetchReceptionData();
+    }, []); // Empty dependency array, runs only once
 
     const onSubmit = async (data) => {
         try {
             const response = await axios.post("http://localhost:3001/patient/register", { patientInfo: data });
             if (response.status === 201) {
                 setRegistrationMessage(`Patient registered successfully! Registration Number: ${response.data.id}`);
-                reset()
-                
-            } 
-                
-        } catch (error) {
-            if(error.response&& error.response.status === 400){setRegistrationMessage('the email already exists try other');
-                return
+                reset(); // Reset form fields
             }
-            setRegistrationMessage('Failed to register patient. Server error.');
-            console.error(error);
+        } catch (error) {
+            if (error.response && error.response.status === 400) {
+                setRegistrationMessage('The email already exists. Please try another.');
+            } else {
+                setRegistrationMessage('Failed to register patient. Server error.');
+            }
+            console.error("Registration error:", error);
         }
     };
 
@@ -95,9 +98,9 @@ const PatientRegistration = () => {
                             Email
                         </label>
                         <input
-                            type="text"
+                            type="email" // Changed to email type
                             id="email"
-                            {...register('email')} // Email is optional
+                            {...register('email', { required: true })}
                             className={`mt-1 block w-full border rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-400 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
                         />
                         {errors.email && <p className="text-red-500 text-sm">This field is required</p>}
