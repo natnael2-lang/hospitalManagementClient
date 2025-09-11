@@ -27,7 +27,7 @@ const PatientRegistration = () => {
 
     const onSubmit = async (data) => {
         try {
-            const response = await axios.post("http://localhost:3001/patient/register", { patientInfo: data });
+            const response = await axios.post("https://hospitalmanagementserver-nqol.onrender.com/patient/register", { patientInfo: data });
             if (response.status === 201) {
                 setRegistrationMessage(`Patient registered successfully! Registration Number: ${response.data.id}`);
                 reset(); 
