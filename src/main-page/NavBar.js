@@ -17,6 +17,28 @@ const Navbar = () => {
             }
         }
     };
+    const handleLogin=async()=>{
+
+       
+            try {
+                const res = await axios.get("https://hospitalmanagementserver-nqol.onrender.com/auth/verifyToken", { withCredentials: true });
+                if (res.status === 200) {
+                    navigate(`${res.data.redirect}`);
+                }
+            } catch (err) {
+               if(err.res){
+                if(err.res.status===400 || err.res.status===302){
+                navigate(`${err.res.data.redirect}`)}
+               }
+               else if(err.res.status===500){console.log("server error")}
+               else{
+                console.log("check the network ")
+               }
+            }
+        
+    
+
+    }
 
     return (
         <nav className="bg-white shadow-lg py-4 px-6 sticky top-0 w-full z-10 mb-5 flex flex-col">
@@ -31,9 +53,9 @@ const Navbar = () => {
                     <Link to="/announcement" className="navbar-item text-gray-700 hover:text-blue-600 transition duration-200">
                         Announcement
                     </Link>
-                    <Link to="/login" className="navbar-item text-gray-700 hover:text-blue-600 transition duration-200">
+                    <button onClick={handleLogin} className="navbar-item text-gray-700 hover:text-blue-600 transition duration-200">
                         Login
-                    </Link>
+                    </button>
                     <button onClick={handleLogout} className="navbar-item text-gray-700 hover:text-blue-600 transition duration-200">
                         Logout
                     </button>

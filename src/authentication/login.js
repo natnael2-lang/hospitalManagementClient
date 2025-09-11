@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from "../../src/main-page/NavBar";
@@ -8,19 +8,7 @@ const Login = () => {
     const [formData, setFormData] = useState({ username: '', password: '' });
     const [errors, setErrors] = useState({});
 
-    useEffect(() => {
-        const checkLoginStatus = async () => {
-            try {
-                const res = await axios.get("https://hospitalmanagementserver-nqol.onrender.com/auth/loginOnLoad", { withCredentials: true });
-                if (res.status === 200) {
-                    navigate(`${res.data.redirect}`);
-                }
-            } catch (err) {
-                console.log(err); // Handle error if necessary
-            }
-        };
-        checkLoginStatus();
-    }, [navigate]);
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,7 +26,7 @@ const Login = () => {
                     navigate(redirectPath);
                 }
             } catch (err) {
-                console.log(err); // Handle error
+                console.log(err);
             }
         }
     };
