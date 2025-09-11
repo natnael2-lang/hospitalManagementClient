@@ -11,7 +11,7 @@ const PatientRegistration = () => {
     useEffect(() => {
         const fetchReceptionData = async () => {
             try {
-                const res = await axios.get("http://localhost:3001/reception");
+                const res = await axios.get("https://hospitalmanagementserver-nqol.onrender.com/reception");
                 if (res.status === 200) {
                    
                 } else {
