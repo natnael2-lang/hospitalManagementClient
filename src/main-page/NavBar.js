@@ -7,7 +7,7 @@ const Navbar = () => {
     
     const handleLogout = async () => {
         try {
-            const response = await axios.get("http://localhost:3001/auth/logout", { withCredentials: true });
+            const response = await axios.get("https://hospitalmanagementserver-nqol.onrender.com/auth/logout", { withCredentials: true });
             navigate(response.data.redirect);
         } catch (err) {
             if (err.response && err.response.status === 500) {
