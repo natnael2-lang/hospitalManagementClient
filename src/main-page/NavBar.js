@@ -26,9 +26,9 @@ const Navbar = () => {
                     navigate(`${res.data.redirect}`);
                 }
             } catch (err) {
-               if(err.res){
-                if(err.res.status===400 || err.res.status===302){
-                navigate(`${err.res.data.redirect}`)}
+               if(err.response){
+                if(err.response.status===400 || err.response.status===302){
+                navigate(`${err.response.data.redirect}`)}
                }
                else if(err.res.status===500){console.log("server error")}
                else{
