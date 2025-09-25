@@ -5,6 +5,7 @@ import InquiryHandler from './InquiryHandler.js';
 import PatientRecords from './PatientRecords.js';
 import TelemedicineCoordinator from './TelemedicineCoordinator.js';
 import Profile from './Profile.js';
+import useLogout from "../authentication/components/components"
 
 const SelectedComponent = {
   AppointmentForm: 'AppointmentForm',
@@ -19,6 +20,7 @@ const App = () => {
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null); 
+  const {handleLogout}=useLogout();
 
   const handleNavigationChange = (component) => {
     setSelectedComponent(component);
@@ -63,9 +65,10 @@ const App = () => {
   return (
     <div className="min-h-screen flex flex-col" >
       {/* Fixed Navigation bar */}
-      <nav className="bg-blue-600 p-4 sticky w-full z-10 top-0 " ref={dropdownRef}>
-        <h1 className="text-white text-2xl font-bold">Receptionist</h1>
-        <div className="relative mt-4" >
+      <nav className="bg-blue-600 px-4 py-2 sticky w-full z-10 top-0  " ref={dropdownRef}>
+        
+        <div className="relative flex justify-between " >
+          <h1 className="text-white text-2xl font-bold">Receptionist</h1>
           <button
             className="bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-400"
             onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -73,8 +76,8 @@ const App = () => {
             Navigation
           </button>
           {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded shadow-lg z-20" >
-              <button className="block px-4 bg-blue-500 py-2 text-gray-800 hover:bg-gray-100 w-full text-left" onClick={() => handleNavigationChange(SelectedComponent.AppointmentForm)}>
+            <div className="absolute right-0 top-full w-48 bg-white rounded shadow-lg z-20" >
+              <button className="block px-4  py-2 text-gray-800 hover:bg-gray-100 w-full text-left" onClick={() => handleNavigationChange(SelectedComponent.AppointmentForm)}>
                 Schedule Appointment
               </button>
               <button className="block px-4  py-2 text-gray-800 hover:bg-gray-100 w-full text-left" onClick={() => handleNavigationChange(SelectedComponent.PatientRegistration)}>
@@ -92,6 +95,9 @@ const App = () => {
               <button className="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left" onClick={() => handleNavigationChange(SelectedComponent.Profile)}>
                 Profile
               </button>
+              <button onClick={handleLogout} className="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left">
+                        Logout
+                    </button>
             </div>
           )}
         </div>

@@ -1,17 +1,16 @@
-// Import React library and CSS file for styling
+
 import React, { useState } from 'react';
 import axios from 'axios'
 
 
-// Define MedicalImagingRequest functional component
-    const MedicalImagingRequest = () => {
-    const [formData, setFormData] = useState({}) // State variable to store form data
-    const onChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value }) // Update state variable when form data changes
-    } // Function to update state variable when form data changes
 
+    const MedicalImagingRequest = () => {
+    const [formData, setFormData] = useState({}) 
+    const onChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value }) 
+    } 
     const handleSubmit = async(e) => { 
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault(); 
         await axios.post('/api/doctor_image_request', formData)
   }
 
@@ -19,57 +18,56 @@ import axios from 'axios'
 
 
     
-    // JSX structure for the component
+    
     return (
         <div>
-            {/* Header with navigation bar */}
+          
             <header className="navigation-bar">
                 <div className="header-content">
-                    <a href="/" className="home-link">Home</a> {/* Home link */}
-                    <a href="/" className="profile-link">Profile</a> {/* Profile link */}
+                    <a href="/" className="home-link">Home</a> 
+                    <a href="/" className="profile-link">Profile</a> 
                 </div>
             </header>
-            {/* Main container for the form */}
+          
             <div className="container">
-                {/* Left column for patient information */}
+                
                 <div className="left-column">
-                    {/* Form for collecting patient information */}
-                    <form >    {/* a post request */}
+                    
+                    <form >   
                    
-                        <label htmlFor="patient_name">Patient Name:</label> {/* Label for patient name */}
-                        <input onChange = {onChange} type="text" id="patient_name" name="patient_name" required /><br /><br /> {/* Input field for patient name */}
+                        <label htmlFor="patient_name">Patient Name:</label> 
+                        <input onChange = {onChange} type="text" id="patient_name" name="patient_name" required /><br /><br /> 
                         
-                        <label htmlFor="dob">Date of Birth:</label> {/* Label for date of birth */}
-                        <input onChange = {onChange} type="date" id="dob" name="dob" required /><br /><br /> {/* Input field for date of birth */}
+                        <label htmlFor="dob">Date of Birth:</label> 
+                        <input onChange = {onChange} type="date" id="dob" name="dob" required /><br /><br /> 
                         
-                        <label htmlFor="gender">Gender:</label> {/* Label for gender */}
-                        <select onChange = {onChange} id="gender" name="gender" required> {/* Dropdown for selecting gender */}
-                            <option value="">Select Gender</option> {/* Default option */}
-                            <option value="male">Male</option> {/* Option for male */}
-                            <option value="female">Female</option> {/* Option for female */}
+                        <label htmlFor="gender">Gender:</label> 
+                        <select onChange = {onChange} id="gender" name="gender" required> 
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option> 
                         </select><br /><br />
 
-                        <label htmlFor="physician_name">Physician Name:</label> {/* Label for physician name */}
-                        <input onChange = {onChange} type="text" id="physician_name" name="physician_name" required /><br /><br /> {/* Input field for physician name */}
+                        <label htmlFor="physician_name">Physician Name:</label> 
+                        <input onChange = {onChange} type="text" id="physician_name" name="physician_name" required /><br /><br /> 
 
-                        <label htmlFor="physician_contact">Physician Contact Info:</label> {/* Label for physician contact info */}
-                        <input onChange = {onChange} type="text" id="physician_contact" name="physician_contact" required /><br /><br /> {/* Input field for physician contact info */}
+                        <label htmlFor="physician_contact">Physician Contact Info:</label> 
+                        <input onChange = {onChange} type="text" id="physician_contact" name="physician_contact" required /><br /><br /> 
 
-                        <label htmlFor="imaging_procedure">Select Imaging Procedure:</label> {/* Label for imaging procedure */}
-                        <select onChange = {onChange} id="imaging_procedure" name="imaging_procedure" required> {/* Dropdown for selecting imaging procedure */}
-                            <option value="">Select Procedure</option> {/* Default option */}
-                            <option value="xray">X-ray</option> {/* Option for X-ray */}
-                            <option value="ctscan">CT Scan</option> {/* Option for CT Scan */}
-                            <option value="mri">MRI</option> {/* Option for MRI */}
-                            <option value="ultrasound">Ultrasound</option> {/* Option for Ultrasound */}
+                        <label htmlFor="imaging_procedure">Select Imaging Procedure:</label> 
+                        <select onChange = {onChange} id="imaging_procedure" name="imaging_procedure" required> 
+                            <option value="">Select Procedure</option>
+                            <option value="xray">X-ray</option> 
+                            <option value="ctscan">CT Scan</option> 
+                            <option value="mri">MRI</option> 
+                            <option value="ultrasound">Ultrasound</option> 
                         </select><br /><br />
 
-                        <label htmlFor="clinical_indication">Clinical Indication:</label> {/* Label for clinical indication */}
-                        <textarea onChange = {onChange} id="clinical_indication" name="clinical_indication" rows="4" required></textarea><br /><br /> {/* Textarea for clinical indication */}
+                        <label htmlFor="clinical_indication">Clinical Indication:</label>
+                        <textarea onChange = {onChange} id="clinical_indication" name="clinical_indication" rows="4" required></textarea><br /><br />
 
-                        <label htmlFor="special_instructions">Special Instructions:</label> {/* Label for special instructions */}
-                        <textarea onChange = {onChange} id="special_instructions" name="special_instructions" rows="4"></textarea><br /><br /> {/* Textarea for special instructions */}
-                        <button onClick = {handleSubmit}>Submit</button>
+                        <label htmlFor="special_instructions">Special Instructions:</label> 
+                        <textarea onChange = {onChange} id="special_instructions" name="special_instructions" rows="4"></textarea><br /><br /> 
 
                     </form>
                 
@@ -79,4 +77,4 @@ import axios from 'axios'
         )};
     
 
-export default MedicalImagingRequest; // Export the MedicalImagingRequest component
+export default MedicalImagingRequest; 

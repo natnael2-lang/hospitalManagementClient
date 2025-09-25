@@ -8,7 +8,7 @@ import ChangePassword from './authentication/changePassword';
 import Reception from "./Reception/App";
 import Appointments from './doctor/appointments/appointment';
 import AppointmentDetailsPage from './doctor/appointments/appointmentsDetail';
-import Doctor1 from "./DoctorPage/DoctorPage";
+import Doctor from "./doctor/doctor";
 import LabRequests from './doctor/appointments/components/labRequest';
 import PatientRegistration from './Reception/PatientRegistration';
 import AppointmentForm from './Reception/AppointmentForm';
@@ -51,7 +51,7 @@ const App = () => {
                
                 <Route path="/appointments/:doctorId" element={<Appointments />} />
                 <Route path="/appointmentsDetail" element={<AppointmentDetailsPage />} />
-                <Route path="/doctor" element={<Doctor1 />} />
+                <Route path="/doctor" element={<Doctor />} />
                 <Route path="/labRequests" element={<LabRequests />} />
 
                 {/* Admin Routes */}

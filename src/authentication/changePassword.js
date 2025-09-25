@@ -18,7 +18,7 @@ const ChangePassword = () => {
         setErrors(newErrors);
         if (Object.keys(newErrors).length === 0) {
             try {
-                const response = await axios.post('/api/changePassword', { password: password });
+                const response = await axios.post('https://hospitalmanagementserver-nqol.onrender.com/changePassword/id', { password: password });
                 const role = response.data.role;
                 const roleUrl = `/${role}`;
                 navigate(roleUrl);

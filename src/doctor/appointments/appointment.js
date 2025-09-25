@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
+import Navbar from "../navbar";
 const Appointments = () => {
     const [appointments, setAppointment] = useState([]);
     const doctorId = useParams().doctorId;
@@ -14,6 +14,7 @@ const Appointments = () => {
 
     return (
         <>
+            <Navbar doctorId={doctorId} />
             {appointments.length === 0 ? (
                 <div>No appointments</div>
             ) : (

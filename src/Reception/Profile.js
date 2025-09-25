@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 const Profile = ({ formData1 }) => {
   const [editMode, setEditMode] = useState(false);
-  const [formData, setFormData] = useState(formData1 || {}); // Initialize with formData1
+  const [formData, setFormData] = useState(formData1 || {}); 
 
   useEffect(() => {
-    setFormData(formData1); // Update state if formData1 changes
+    setFormData(formData1); 
   }, [formData1]);
 
   const toggleEdit = () => {
-    setEditMode(prevState => !prevState); // Toggle edit mode
+    setEditMode(prevState => !prevState); 
   };
 
   const handleChange = (e) => {
@@ -38,7 +38,7 @@ const Profile = ({ formData1 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted with data:', formData);
-    // Here you could send formData to an API
+   
     toggleEdit();
   };
 

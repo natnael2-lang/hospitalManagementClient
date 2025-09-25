@@ -1,22 +1,12 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
+import useLogout  from '../authentication/components/components';
 
 const Navbar = () => {
     const navigate = useNavigate();
+    const handleLogout=useLogout()
     
-    const handleLogout = async () => {
-        try {
-            const response = await axios.get("https://hospitalmanagementserver-nqol.onrender.com/auth/logout", { withCredentials: true });
-            navigate(response.data.redirect);
-        } catch (err) {
-            if (err.response && err.response.status === 500) {
-                console.log("Server error");
-            } else {
-                console.log("Check the network");
-            }
-        }
-    };
     const handleLogin=async()=>{
 
        
