@@ -70,9 +70,9 @@ const Navbar = () => {
                     <Link to="/announcement" className="navbar-item text-gray-700 hover:text-blue-600 transition duration-200">
                         Announcement
                     </Link>
-                    <button onClick={handleLogin} className="navbar-item text-gray-700 hover:text-blue-600 transition duration-200">
+                    <Link to="/login" className="navbar-item text-gray-700 hover:text-blue-600 transition duration-200">
                         Login
-                    </button>
+                    </Link>
                     <button onClick={handleLogout} className="navbar-item text-gray-700 hover:text-blue-600 transition duration-200">
                         Logout
                     </button>
