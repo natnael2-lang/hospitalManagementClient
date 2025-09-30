@@ -14,13 +14,14 @@ const Login = () => {
             try {
                 const res = await axios.get(`${process.env.REACT_APP_CURRENT_URL}/auth/verifyToken`, { withCredentials: true });
                 if (res.status === 200) {
-                    setIsLogin(true);
+                    
                     navigate(res.data.redirect);
                 }
             } catch (err) {
                 if (err.response) {
                     if (err.response.status === 400 || err.response.status === 302) {
-                        navigate(err.response.data.redirect);
+                        setIsLogin(true);
+                        
                     }
                 } else {
                     console.log("Network error or server error");
