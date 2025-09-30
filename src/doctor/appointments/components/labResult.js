@@ -24,7 +24,7 @@ function LabResults({ handleLabResult, labResult, labRequest }) {
     if (labRequest && labRequest._id) {
       fetchLabResults();
     }
-  }, []);
+  }, [handleLabResult,labRequest]);
 
   return (
     <div label="Lab Results">
