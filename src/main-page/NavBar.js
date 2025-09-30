@@ -1,32 +1,14 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from "axios";
+import { Link} from 'react-router-dom';
+
 import useLogout from '../authentication/components/components';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const navigate = useNavigate();
+    
     const {handleLogout} = useLogout();
     
-    const handleLogin = async () => {
-        try {
-            const res = await axios.get(`${process.env.REACT_APP_CURRENT_URL}/auth/verifyToken`, { withCredentials: true });
-            if (res.status === 200) {
-                navigate(`${res.data.redirect}`);
-            }
-        } catch (err) {
-            if (err.response) {
-                if (err.response.status === 400 || err.response.status === 302) {
-                    navigate(`${err.response.data.redirect}`);
-                }
-            } else if (err.res.status === 500) {
-                console.log("server error");
-            } else {
-                console.log("check the network ");
-            }
-        }
-    }
-
+   
     return (
         <nav className="bg-white shadow-lg py-4 px-6 sticky top-0 w-full z-10 mb-5">
             <div className="container mx-auto flex justify-between items-center">
@@ -40,9 +22,9 @@ const Navbar = () => {
                     <Link to="/announcement" className="navbar-item text-gray-700 hover:text-blue-600 transition duration-200">
                         Announcement
                     </Link>
-                    <button onClick={handleLogin} className="navbar-item text-gray-700 hover:text-blue-600 transition duration-200">
+                    <Link to="/login" className="navbar-item text-gray-700 hover:text-blue-600 transition duration-200">
                         Login
-                    </button>
+                    </Link>
                     <button onClick={handleLogout} className="navbar-item text-gray-700 hover:text-blue-600 transition duration-200">
                         Logout
                     </button>
