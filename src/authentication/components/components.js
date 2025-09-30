@@ -1,4 +1,3 @@
-
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -8,13 +7,18 @@ const useLogout = () => {
 
     const handleLogout = async () => {
         try {
-            const response = await axios.get("https://hospitalmanagementserver-nqol.onrender.com/auth/logout", { withCredentials: true });
-            navigate(response.data.redirect); 
+            const response = await axios.get(`${process.env.REACT_APP_CURRENT_URL}/auth/logout`, { withCredentials: true });
+            // Assuming the response contains a 'redirect' property
+            if (response.data.redirect) {
+                navigate(response.data.redirect);
+            } else {
+                console.error("No redirect URL provided in the response");
+            }
         } catch (err) {
             if (err.response && err.response.status === 500) {
                 console.error("Server error");
             } else {
-                console.error("Check the network");
+                console.error("Network error or unexpected response:", err);
             }
         }
     };
@@ -22,4 +26,4 @@ const useLogout = () => {
     return { handleLogout };
 };
 
-export default useLogout; // Ensure this is a default export
+export default useLogout;

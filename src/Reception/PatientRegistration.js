@@ -11,7 +11,7 @@ const PatientRegistration = () => {
     useEffect(() => {
         const fetchReceptionData = async () => {
             try {
-                const res = await axios.get("https://hospitalmanagementserver-nqol.onrender.com/reception");
+                const res = await axios.get(`${process.env.REACT_APP_CURRENT_URL}/reception`);
                 if (res.status === 200) {
                    
                 } else {
@@ -27,9 +27,9 @@ const PatientRegistration = () => {
 
     const onSubmit = async (data) => {
         try {
-            const response = await axios.post("https://hospitalmanagementserver-nqol.onrender.com/patient/register", { patientInfo: data });
-            if (response.status === 201) {
-                setRegistrationMessage(`Patient registered successfully! Registration Number: ${response.data.id}`);
+            const response = await axios.post(`${process.env.REACT_APP_CURRENT_URL}/reception/registration`, { data },{withCredentials:true});
+            if (response.status === 200) {
+                setRegistrationMessage(`Patient registered successfully! Registration Number: ${response.data.cardNumber}`);
                 reset(); 
             }
         } catch (error) {

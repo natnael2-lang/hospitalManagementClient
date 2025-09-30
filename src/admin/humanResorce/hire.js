@@ -14,7 +14,7 @@ export default function EmployeeForm() {
 
         try {
 
-            const response = await axios.post("http://localhost:3001/admin/hire", {data});
+            const response = await axios.post(`${process.env.REACT_APP_CURRENT_URL}/admin/hire`, {data});
             if (response.status === 201) {
                 alert(`User registered successfully with id  ${response.data.id}`);
                 reset(); 
@@ -68,6 +68,7 @@ export default function EmployeeForm() {
                                 <option value="pharmacist">Pharmacist</option>
                                 <option value="reception">Receptionist</option>
                                 <option value="contentCreator">Content Creator</option>
+                                <option value="admin">Admin</option>
                             </select>
                             {errors.role && <p className="text-red-500 text-sm">{errors.role.message}</p> }
                         </div>

@@ -16,6 +16,10 @@ import Hire from "./admin/humanResorce/hire";
 import Fire from "./admin/humanResorce/fire"; 
 import Profile from "./admin/humanResorce/fire"; 
 import EmployeeDetails from "./admin/humanResorce/fire"; 
+import LabTechnician from "./labTech/labRequests";
+import PharmacyHome from "./Pharmacy/PharmaHome";
+import Medicine from "./Pharmacy/Medicine";
+import Prescriptions from "./Pharmacy/prescriptions";
 
 const App = () => {
     const location = useLocation();
@@ -49,16 +53,21 @@ const App = () => {
 
                 {/* Doctor */}
                
-                <Route path="/appointments/:doctorId" element={<Appointments />} />
-                <Route path="/appointmentsDetail" element={<AppointmentDetailsPage />} />
+                <Route path="/appointments" element={<Appointments />} />
+                <Route path="/appointmentsDetail/:appointmentId" element={<AppointmentDetailsPage />} />
                 <Route path="/doctor" element={<Doctor />} />
                 <Route path="/labRequests" element={<LabRequests />} />
 
                 {/* Admin Routes */}
-                <Route path="admin/hire" element={<Hire />} />
+                <Route path="/admin" element={<Hire />} />
                 <Route path="admin/fire" element={<Fire />} />
                 <Route path="admin/profile" element={<Profile />} />
                 <Route path="admin/employees" element={<EmployeeDetails />} />
+                {/*labTchnician */}
+                <Route path="/labTechnician" element={<LabTechnician />} />
+                <Route path="/pharmacist" element={<PharmacyHome />} />
+                <Route path="/prescriptions" element={<Prescriptions/>} />
+                <Route path="/medicine" element={<Medicine/>} />
 
                 {/* Default Route */}
                 <Route path="*" element={<div><h1>404 - Not Found</h1></div>} />

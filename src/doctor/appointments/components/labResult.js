@@ -1,43 +1,54 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
-function LabResults({handleLabResults,appointmentId,labResults}) {
-
+function LabResults({ handleLabResult, labResult, labRequest }) {
   useEffect(() => {
     const fetchLabResults = async () => {
+      if (!labRequest || !labRequest._id) {
+        console.error('labRequest is not available or does not have an ID');
+        return;
+      }
+
       try {
-        const response = await axios.get(`/labRequests/${appointmentId}`, {
-          params: {
-        
-            status: 'completed', 
-          },
-         
+        const response = await axios.get(`${process.env.REACT_APP_CURRENT_URL}/doctor/labResult/${labRequest._id}`, {
+          withCredentials: true,
         });
-
-        if(!response.ok){  fetchLabResults();}
-        handleLabResults(response)
-
-
-        
-    
+        if (response.status === 200) {
+          handleLabResult(response.data.data); // Ensure this has lab results
+        }
       } catch (error) {
-        console.error('Failed to fetch lab results:');
+        console.error('Failed to fetch lab results:', error);
       }
     };
-    fetchLabResults();
 
-  
-  }, [appointmentId, handleLabResults]);
+    if (labRequest && labRequest._id) {
+      fetchLabResults();
+    }
+  }, []);
 
   return (
     <div label="Lab Results">
       <h3 className="text-lg font-semibold">Lab Results</h3>
-      { labResults && labResults.length > 0 ? (
-        labResults.map(labResult => (
-          <div key={labResult._id} className="mb-2 flex justify-between">
-            <p className="font-semibold">Test: {labResult.test}</p>
-            <p className="font-semibold">Result: {labResult.result}</p>
-            <p>Date: {new Date(labResult.date).toLocaleDateString()}</p>
+      {labResult && labResult.length > 0 ? (
+        labResult.map((result) => (
+          <div key={result._id} className="mb-6">
+            <h4 className="font-semibold">Lab Result ID: {result._id}</h4>
+            <table className="min-w-full border-collapse border border-gray-300">
+              <thead>
+                <tr>
+                  <th className="border border-gray-300 p-2">Test</th>
+                  <th className="border border-gray-300 p-2">Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                {result.findings && Object.entries(result.findings).map(([testName, testResult]) => (
+                  <tr key={testName}>
+                    <td className="border border-gray-300 p-2">{testName}</td>
+                    <td className="border border-gray-300 p-2">{testResult}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         ))
       ) : (

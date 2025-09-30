@@ -6,70 +6,60 @@ import LabRequests from './components/labRequest';
 import Prescriptions from './components/prescription';
 import LabResults from './components/labResult';
 
-function AppointmentDetailsPage() {
+const AppointmentDetailsPage = () => {
   const { appointmentId } = useParams();
   const [appointmentDetails, setAppointmentDetails] = useState(null);
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(null); 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [labRequest, setLabRequest] = useState(null);
+  const [labResult, setLabResult] = useState(null);
+  const [prescription,setPrescription]=useState(null)
 
-  // Remove unused states if not needed
-  // const [labResults, setLabResults] = useState([]);
-  // const [prescription, setPrescription] = useState("");
-
-  const handleLabResults = (data) => {
-    // Implement logic if labResults is used
-    // setLabResults(data);
+  const handleLabRequest = (data) => {
+    console.log("Updating labRequest with data:", data);
+    setLabRequest(data);
   };
 
-  const handlePrescription = (medication, dosage) => {
-    // Implement logic if prescription is used
-    // setPrescription({ medication, dosage });
-    // handleMedicalDetails();
+  const handleLabResult = (data) => {
+    setLabResult(data);
   };
+  const handlePrescription=(data)=>{
+          setPrescription(data)
+  }
 
   useEffect(() => {
-    async function fetchAppointmentDetails() {
-      setLoading(true); 
+    const fetchAppointmentDetails = async () => {
       try {
-        const response = await fetch(`/appointment/${appointmentId}`);
-        if (response.ok) {
-          const data = await response.json();
-          setAppointmentDetails(data);
-        } else {
-          setError("Failed to fetch appointment details.");
-          setAppointmentDetails(null);
-        }
+        const response = await fetch(`${process.env.REACT_APP_CURRENT_URL}/doctor/appointments/${appointmentId}`);
+        if (!response.ok) throw new Error('Failed to fetch appointment details.');
+        
+        const data = await response.json();
+        setAppointmentDetails(data.data);
       } catch (error) {
-        console.log("Failed to fetch:", error);
-        setError("Failed to fetch appointment details.");
+        setError(error.message);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
-    }
+    };
 
     fetchAppointmentDetails();
   }, [appointmentId]);
 
-  const patientId = appointmentDetails?.appointment?.patientId;
-  const doctorId = appointmentDetails?.appointment?.doctorId;
+  if (loading) return <p>Loading...</p>;
 
-  if (loading) {
-    return <p>Loading...</p>; 
-  }
+  const patientId = appointmentDetails?.patientId;
 
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Appointment Details</h2>
       <h3 className="text-lg font-semibold">Appointment Information:</h3>
-      {error ? (
-        <p>{error}</p> 
-      ) : appointmentDetails ? (
-        <>
-          <p>Date: {new Date(appointmentDetails.appointment.date).toLocaleDateString()}</p>
-          <p>Patient: {appointmentDetails.appointment.patient.name}</p>
-        </>
-      ) : (
-        <p>No appointment details available.</p>
+      {error ? <p>{error}</p> : (
+        appointmentDetails ? (
+          <>
+            <p>Date: {new Date(appointmentDetails.date).toLocaleDateString()}</p>
+            <p>Patient: {appointmentDetails.patientName}</p>
+          </>
+        ) : <p>No appointment details available.</p>
       )}
 
       <Tabs 
@@ -80,13 +70,22 @@ function AppointmentDetailsPage() {
           { label: 'Lab Results' },
         ]}
       >
-        <MedicalHistory patientId={patientId} doctorId={doctorId} />
-        <LabRequests patientId={patientId} doctorId={doctorId} />
-        <Prescriptions patientId={patientId} doctorId={doctorId} handlePrescription={handlePrescription} />
-        <LabResults patientId={patientId} doctorId={doctorId} handleLabResults={handleLabResults} />
+        <MedicalHistory patientId={patientId} label="Medical History" />
+        <LabRequests 
+          appointmentId={appointmentId} 
+          handleLabRequest={handleLabRequest} 
+          labRequest={labRequest} 
+          label="Lab Requests" 
+        />
+        <Prescriptions appointmentId={appointmentId} patientId={patientId} handlePrescription={handlePrescription} prescription={prescription} label="Prescriptions" />
+        <LabResults  
+          handleLabResult={handleLabResult} 
+          labResult={labResult} 
+          labRequest={labRequest} // Ensure labRequest is passed here
+          label="Lab Results" 
+        />
       </Tabs>
     </div>
   );
-}
-
+};
 export default AppointmentDetailsPage;

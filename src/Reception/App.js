@@ -5,7 +5,7 @@ import InquiryHandler from './InquiryHandler.js';
 import PatientRecords from './PatientRecords.js';
 import TelemedicineCoordinator from './TelemedicineCoordinator.js';
 import Profile from './Profile.js';
-import useLogout from "../authentication/components/components"
+import useLogout from "../authentication/components/components.js"
 
 const SelectedComponent = {
   AppointmentForm: 'AppointmentForm',

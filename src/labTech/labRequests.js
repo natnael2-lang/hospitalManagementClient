@@ -1,31 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
 const LabTechnician = () => {
   const [labRequests, setLabRequests] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [currentRequest, setCurrentRequest] = useState(null);
   const [results, setResults] = useState({});
-  const { labTechId } = useParams();
 
   useEffect(() => {
     fetchLabRequests();
-
-   
-    const intervalId = setInterval(fetchLabRequests, 5000);
-
-    
-    return () => clearInterval(intervalId);
   }, []);
 
   const fetchLabRequests = async () => {
     try {
-      const response = await axios.get('/api/lab-requests?status=pending');
-      setLabRequests(response.data);
+      const response = await axios.get(`${process.env.REACT_APP_CURRENT_URL}/labTechnician/labRequests`, { withCredentials: true });
+      setLabRequests(response.data.data); 
     } catch (error) {
       console.error('Error fetching lab requests:', error);
-    }
+    } 
   };
 
   const handleInputChange = (testName, value) => {
@@ -36,12 +28,17 @@ const LabTechnician = () => {
   };
 
   const handleSubmit = async () => {
+    const { note, ...findings } = results; // Destructure to exclude note
+
     const requestData = {
-      results,
+      findings, // Only include findings without note
+      labRequestId: currentRequest._id, 
+      doctorId: currentRequest.doctorId,
+      notes: note || null, // Add note to notes field
     };
 
     try {
-      await axios.patch(`/api/lab-requests/${currentRequest._id}`, requestData);
+      await axios.post(`${process.env.REACT_APP_CURRENT_URL}/labTechnician/labResult`, requestData, { withCredentials: true });
       console.log('Results submitted for request:', currentRequest._id);
       setModalOpen(false);
       setResults({});
@@ -65,9 +62,8 @@ const LabTechnician = () => {
   return (
     <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-xl font-semibold mb-4">Lab Requests</h2>
-      {labRequests.map((request) => (
+      {labRequests.length > 0 && labRequests.map((request) => (
         <div key={request._id} className="mb-6">
-          <h3 className="font-semibold">{`Patient ID: ${request.patientId}`}</h3>
           <button
             onClick={() => openModal(request)}
             className="mt-2 text-blue-600 hover:underline"
@@ -81,22 +77,26 @@ const LabTechnician = () => {
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
           <div className="bg-white rounded-lg p-6 max-w-lg mx-auto">
             <h3 className="text-lg font-semibold mb-4">{`Tests for Patient ID: ${currentRequest.patientId}`}</h3>
-            {currentRequest.tests.map((test) => (
+            {currentRequest.testRequests.map((test) => (
               <div key={test.name} className="flex items-center mb-2">
                 <label className="mr-2">{test.name}:</label>
                 <input
                   type="text"
                   placeholder="Enter result"
-                  value={results[test.name] || ''} 
+                  value={results[test.name] || ''}
                   onChange={(e) => handleInputChange(test.name, e.target.value)}
                   className="border border-gray-300 rounded px-2 py-1"
                 />
               </div>
             ))}
             <div>
-
-                 <lablel  className="block mb-1">Notes :</lablel>
-                 <textarea type="text" value={results.note} name="note"className='block p-4 border-none' onChange={(e)=>handleInputChange(e.target.name,e.target.value)}/>
+              <label className="block mb-1">Notes:</label>
+              <textarea
+                value={results.note || ''} // Ensure note is handled correctly
+                name="note"
+                className="block p-4 border border-gray-300 rounded"
+                onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+              />
             </div>
             <div className="flex justify-end mt-4">
               <button

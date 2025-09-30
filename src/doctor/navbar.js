@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import useLogout from "../authentication/components/components";
 
-const Navbar = ({ doctorId }) => {
+const Navbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const { handleLogout } = useLogout();
 
@@ -15,7 +15,7 @@ const Navbar = ({ doctorId }) => {
             <h1 className="text-lg font-bold">Doctor Portal</h1>
             <div className="flex items-center space-x-4">
                 <NavLink 
-                    to={`/appointments/${doctorId}`} 
+                    to={`/appointments`} 
                     className={({ isActive }) => 
                         `hover:text-blue-200 ${isActive ? "text-blue-300" : ""}`
                     }
@@ -31,7 +31,7 @@ const Navbar = ({ doctorId }) => {
                     View Feedback
                 </NavLink>
                 <NavLink 
-                    to={`/medical-history/${doctorId}`} 
+                    to={`/medical-history`} 
                     className={({ isActive }) => 
                         `hover:text-blue-200 ${isActive ? "text-blue-300" : ""}`
                     }
