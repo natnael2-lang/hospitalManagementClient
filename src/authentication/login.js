@@ -53,7 +53,7 @@ const Login = () => {
     return (
         <div className='min-h-screen flex flex-col'>
             <Navbar />
-            {!isLogin && (
+            {isLogin && (
                 <section className='flex flex-col justify-center items-center flex-1'>
                     <div className='mx-auto my-auto'>
                         <h2 className='bg-gradient-to-r text-center from-blue-500 to-red-800 text-transparent bg-clip-text md:font-bold text-2xl mb-4'>
